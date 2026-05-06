@@ -1,0 +1,133 @@
+/*
+  ============================================================
+  ESTILOS GLOBALES — Lisermet Metalúrgica
+  ============================================================
+
+  TIPOGRAFÍA
+  ──────────
+  Títulos: Rajdhani (700/600) — sans-serif geométrica, bold, industrial.
+    Elección justificada: carácter técnico y anguloso que evoca precisión
+    maquinaria. Excelente legibilidad en display grande. Disponible en
+    múltiples pesos. Alternativas exploradas: Bebas Neue (solo mayúsculas,
+    limita versatilidad), Barlow Condensed (más genérica), Oswald (muy
+    usada). Rajdhani gana por su equilibrio entre personalidad y funcionalidad.
+
+  Cuerpo: Barlow (400/300/500) — sans-serif moderna y limpia, apta para
+    texto largo, excelente en pantallas de baja densidad. Complementa
+    Rajdhani sin competir visualmente.
+
+  ESTILOS
+  ───────
+  CSS Modules elegido sobre styled-components por:
+  · Sin runtime overhead (los estilos se resuelven en build-time)
+  · Colocación natural con cada componente (clean architecture)
+  · Sin dependencia extra
+  · El scoping automático evita colisiones de nombres
+  ============================================================
+*/
+
+/* Reset y base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Paleta Lisermet — gris, blanco, azul corporativo, rojo de acento */
+  --color-bg-dark: #0f0f0f;
+  --color-bg-mid: #1a1a1a;
+  --color-bg-light: #f2f2f2;
+  --color-bg-white: #ffffff;
+
+  --color-blue: #1a4080;
+  --color-blue-light: #2256ad;
+  --color-red: #c0271d;
+  --color-red-light: #d93a30;
+
+  --color-grey: #888888;
+  --color-grey-light: #cccccc;
+  --color-text-dark: #111111;
+  --color-text-light: #f0f0f0;
+  --color-text-muted: #aaaaaa;
+
+  /* Tipografía */
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-mid: 0.4s ease;
+  --transition-slow: 0.7s ease;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-white);
+  min-width: 320px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+}
+
+/* ── Animaciones por scroll (Intersection Observer) ─────── */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.slide-left {
+  transform: translateX(-36px);
+}
+
+.animate-on-scroll.slide-right {
+  transform: translateX(36px);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+  will-change: auto;
+}
+

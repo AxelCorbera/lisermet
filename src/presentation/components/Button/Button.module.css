@@ -1,0 +1,61 @@
+/* Estilos del botón — tres variantes de acento según contexto de sección */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.primary {
+  background-color: var(--color-red);
+  color: #fff;
+  border-color: var(--color-red);
+}
+
+.primary:hover,
+.primary:focus-visible {
+  background-color: var(--color-red-light);
+  border-color: var(--color-red-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 39, 29, 0.35);
+}
+
+.secondary {
+  background-color: var(--color-blue);
+  color: #fff;
+  border-color: var(--color-blue);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  background-color: var(--color-blue-light);
+  border-color: var(--color-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 64, 128, 0.35);
+}
+
+.outline {
+  background-color: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.outline:hover,
+.outline:focus-visible {
+  background-color: #fff;
+  color: var(--color-text-dark);
+  border-color: #fff;
+  transform: translateY(-2px);
+}

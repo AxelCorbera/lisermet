@@ -1,0 +1,191 @@
+/* Hero: viewport completo, parallax leve en desktop, tagline en Rajdhani, línea animada */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background image */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  /* Fallback industrial: gradiente metálico si no hay imagen */
+  background-color: #1a1a1a;
+}
+
+/* Dark overlay con gradiente direccional */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(10, 10, 10, 0.88) 0%,
+    rgba(15, 15, 15, 0.72) 55%,
+    rgba(10, 15, 30, 0.65) 100%
+  );
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  padding-top: 6rem;
+  width: 100%;
+}
+
+/* Badge / eyebrow */
+.badge {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-red);
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 0.7s ease both;
+}
+
+/* Main tagline */
+.tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05em;
+  margin-bottom: 0;
+  animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+.taglineLine {
+  display: block;
+}
+
+/* First line plain white, second line gets blue accent */
+.taglineLine:last-child {
+  color: #ffffff;
+}
+
+/* Animated accent line drawn by CSS */
+.accentLine {
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-red) 0%, var(--color-blue) 100%);
+  margin: 1.5rem 0;
+  animation: drawLine 1s ease-out 0.6s forwards;
+}
+
+@keyframes drawLine {
+  to {
+    width: 100px;
+  }
+}
+
+/* Subtitle */
+.subtitulo {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(240, 240, 240, 0.82);
+  max-width: 560px;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+/* CTA group */
+.ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease 1.2s both;
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.15);
+  }
+}
+
+/* Entry animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Disable parallax on mobile (causes jank) */
+@media (max-width: 768px) {
+  .bg {
+    background-attachment: scroll;
+  }
+
+  .ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

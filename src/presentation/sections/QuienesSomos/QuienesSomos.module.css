@@ -1,0 +1,120 @@
+/* Quiénes Somos: fondo claro, layout de dos columnas texto + imagen, fade-in por scroll */
+
+.section {
+  padding: 6rem 0;
+  background-color: var(--color-bg-white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* Text column */
+.textCol {
+  /* inherits grid cell */
+}
+
+.descripcion {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 1.25rem;
+}
+
+/* Values list */
+.valores {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2.5rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.valor {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.valorTitulo {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-blue);
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.valorDesc {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Image column */
+.imgCol {
+  position: relative;
+}
+
+.imgWrapper {
+  position: relative;
+}
+
+.img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+  /* Fallback background if image not loaded */
+  background-color: #2a2a2a;
+}
+
+/* Decorative accent square behind image */
+.imgAccent {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  width: 60%;
+  height: 60%;
+  border: 3px solid var(--color-red);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ── Tablet ────────── */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .imgCol {
+    order: -1;
+  }
+
+  .img {
+    height: 360px;
+  }
+}
+
+/* ── Mobile ────────── */
+@media (max-width: 480px) {
+  .img {
+    height: 260px;
+  }
+
+  .imgAccent {
+    display: none;
+  }
+}

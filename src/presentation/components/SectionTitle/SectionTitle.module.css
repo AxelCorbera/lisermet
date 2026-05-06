@@ -1,0 +1,44 @@
+/* Estilos del título de sección — etiqueta en rojo, h2 en Rajdhani, línea degradada */
+
+.wrapper {
+  margin-bottom: 3rem;
+}
+
+.centered {
+  text-align: center;
+}
+
+.centered .line {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-red);
+  margin-bottom: 0.6rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-text-dark);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+
+.light .title {
+  color: var(--color-text-light);
+}
+
+.line {
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-red) 0%, var(--color-blue) 100%);
+}

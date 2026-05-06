@@ -1,0 +1,210 @@
+/* Proceso: fondo oscuro, 5 pasos horizontales con línea animada y círculos iluminados */
+
+.section {
+  padding: 6rem 0;
+  background-color: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.subtitulo {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: -1.5rem;
+  margin-bottom: 4rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Steps row ────────── */
+.steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  gap: 0.5rem;
+}
+
+/* ── Horizontal connecting line ────────── */
+.line {
+  position: absolute;
+  /* Vertically centered on the icon circles (top of step + number height + half circle height) */
+  top: calc(1.4rem + 36px); /* number height ~1.4rem, circle radius ~36px → center at 36+1.4rem */
+  left: calc(100% / 10);   /* from center of first step */
+  right: calc(100% / 10);  /* to center of last step */
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-blue) 20%,
+    var(--color-blue-light) 50%,
+    var(--color-blue) 80%,
+    transparent 100%
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+  z-index: 0;
+}
+
+/* Animate line when steps container becomes visible */
+.steps.visible .line {
+  transform: scaleX(1);
+}
+
+/* ── Individual step ────────── */
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Step number badge */
+.number {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-red);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* Icon circle */
+.iconCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-bg-mid);
+  border: 2px solid var(--color-blue);
+  color: var(--color-blue-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease,
+    box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Glow ring on hover */
+.step:hover .iconCircle {
+  background: var(--color-blue);
+  border-color: var(--color-blue-light);
+  color: #fff;
+  box-shadow: 0 0 0 8px rgba(26, 64, 128, 0.18), 0 0 28px rgba(34, 86, 173, 0.45);
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Text content */
+.content {
+  max-width: 180px;
+}
+
+.stepTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.stepDesc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+/* ── Tablet ────────── */
+@media (max-width: 900px) {
+  .steps {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem 0;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .step {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 140px;
+  }
+}
+
+/* ── Mobile ────────── */
+@media (max-width: 560px) {
+  .steps {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .step {
+    flex: none;
+    width: 100%;
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .step:last-child {
+    border-bottom: none;
+  }
+
+  /* Vertical connector line on mobile */
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(36px + 0.5rem); /* center of icon circle */
+    top: calc(0.6rem + 1.4rem + 72px); /* below the icon */
+    width: 2px;
+    height: calc(100% - 72px - 1.4rem - 0.6rem);
+    background: linear-gradient(to bottom, var(--color-blue), transparent);
+  }
+
+  .iconCircle {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    margin-top: calc(0.6rem + 1.4rem); /* align with number+gap */
+  }
+
+  .number {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+  }
+
+  .content {
+    max-width: 100%;
+    padding-top: calc(0.6rem + 1.4rem);
+  }
+}
