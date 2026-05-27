@@ -48,3 +48,8 @@ export default tseslint.config({
   },
 })
 ```
+
+to run 
+```js
+npm run deploy
+```

@@ -6,11 +6,19 @@ import styles from './QuienesSomos.module.css';
 
 export function QuienesSomos() {
   const ref = useScrollAnimation<HTMLElement>();
-  const { sectionLabel, titulo, descripcion, descripcion2, valores, imagenAlt } = es.quienesSomos;
+  const { sectionLabel, titulo, descripcion, descripcion2, imagenAlt } = es.quienesSomos;
 
   return (
     <section id="nosotros" className={styles.section} ref={ref}>
       <div className={styles.container}>
+        
+
+        <div className={`${styles.imgCol} animate-on-scroll slide-right`}>
+          <div className={styles.imgWrapper}>
+            <img src="./assets/quienes-somos.jpg" alt={imagenAlt} className={styles.img} />
+            <div className={styles.imgAccent} aria-hidden="true" />
+          </div>
+        </div>
         <div className={styles.textCol}>
           <SectionTitle label={sectionLabel} title={titulo} />
 
@@ -29,13 +37,6 @@ export function QuienesSomos() {
               </li>
             ))}
           </ul> */}
-        </div>
-
-        <div className={`${styles.imgCol} animate-on-scroll slide-right`}>
-          <div className={styles.imgWrapper}>
-            <img src="/assets/quienes-somos.jpg" alt={imagenAlt} className={styles.img} />
-            <div className={styles.imgAccent} aria-hidden="true" />
-          </div>
         </div>
       </div>
     </section>

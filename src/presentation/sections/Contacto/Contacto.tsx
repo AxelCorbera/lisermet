@@ -39,6 +39,18 @@ export function Contacto() {
           <p className={styles.subtitulo}>{subtitulo}</p>
 
           <ul className={styles.infoList}>
+            
+            <li className={styles.infoItem}>
+              <span className={styles.infoIcon}>
+                <MdOutlineEmail size={22} />
+              </span>
+              <div>
+                <span className={styles.infoLabel}>{info.emailLabel}</span>
+                <a href={`mailto:${info.email}`} className={styles.infoValue}>
+                  {info.email}
+                </a>
+              </div>
+            </li>
 
             <li className={styles.infoItem}>
               <span className={styles.infoIcon}>
@@ -61,28 +73,6 @@ export function Contacto() {
 
             <li className={styles.infoItem}>
               <span className={styles.infoIcon}>
-                <MdOutlineEmail size={22} />
-              </span>
-              <div>
-                <span className={styles.infoLabel}>{info.emailLabel}</span>
-                <a href={`mailto:${info.email}`} className={styles.infoValue}>
-                  {info.email}
-                </a>
-              </div>
-            </li>
-
-            <li className={styles.infoItem}>
-              <span className={styles.infoIcon}>
-                <MdOutlineLocationOn size={22} />
-              </span>
-              <div>
-                <span className={styles.infoLabel}>{info.ubicacionLabel}</span>
-                <span className={styles.infoValue}>{info.ubicacion}</span>
-              </div>
-            </li>
-
-            <li className={styles.infoItem}>
-              <span className={styles.infoIcon}>
                 <FaInstagram size={20} />
               </span>
               <div>
@@ -95,6 +85,16 @@ export function Contacto() {
                 >
                   {info.instagramUser}
                 </a>
+              </div>
+            </li>
+
+            <li className={styles.infoItem}>
+              <span className={styles.infoIcon}>
+                <MdOutlineLocationOn size={22} />
+              </span>
+              <div>
+                <span className={styles.infoLabel}>{info.ubicacionLabel}</span>
+                <span className={styles.infoValue}>{info.ubicacion}</span>
               </div>
             </li>
           </ul>

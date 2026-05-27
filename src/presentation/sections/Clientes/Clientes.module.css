@@ -39,14 +39,14 @@
   border: 1px solid #e8e8e8;
   padding: 1rem 1.5rem;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-  filter: grayscale(100%) opacity(0.55);
+  /* filter: grayscale(100%) opacity(0.55); */
 }
 
-.logoCard:hover {
+/* .logoCard:hover {
   filter: grayscale(0%) opacity(1);
   border-color: var(--color-blue);
   box-shadow: 0 4px 16px rgba(26, 64, 128, 0.12);
-}
+} */
 
 .logoImg {
   max-width: 100%;

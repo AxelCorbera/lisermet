@@ -19,12 +19,6 @@ export function ImageModal({ isOpen, imageSrc, altText, onClose }: ImageModalPro
       }
     };
 
-    const handleBackdropClick = (e: MouseEvent) => {
-      if (e.target === e.currentTarget) {
-        onClose();
-      }
-    };
-
     document.addEventListener('keydown', handleEscape);
     document.body.style.overflow = 'hidden';
 

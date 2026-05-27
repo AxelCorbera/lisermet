@@ -22,7 +22,7 @@ export function Navbar() {
     <header className={[styles.header, scrolled ? styles.scrolled : ''].filter(Boolean).join(' ')}>
       <div className={styles.inner}>
         <a href="#inicio" className={styles.logo} onClick={closeMenu}>
-          <img src="/assets/logo.png" alt={es.hero.logoAlt} className={styles.logoImg} />
+          <img src="./assets/logo.png" alt={es.hero.logoAlt} className={styles.logoImg} />
           <span className={styles.logoFallback}>LISERMET</span>
         </a>
 

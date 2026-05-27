@@ -1,17 +1,19 @@
 // Footer — copyright, links rápidos, redes sociales
-import { FaInstagram } from 'react-icons/fa';
+// import { FaInstagram } from 'react-icons/fa';
 import { es } from '../../../l10n/es';
 import styles from './Footer.module.css';
 
 export function Footer() {
-  const { copyright, tagline, links, social, logoAlt } = es.footer;
+  const { copyright, 
+    // tagline, links, social, logoAlt 
+  } = es.footer;
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
+      {/* <div className={styles.container}>
         <div className={styles.brand}>
           <a href="#inicio" className={styles.logo}>
-            <img src="/assets/logo.png" alt={logoAlt} className={styles.logoImg} />
+            <img src="./assets/logo.png" alt={logoAlt} className={styles.logoImg} />
             <span className={styles.logoFallback}>LISERMET</span>
           </a>
           <p className={styles.tagline}>{tagline}</p>
@@ -40,7 +42,7 @@ export function Footer() {
             <FaInstagram size={22} />
           </a>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.bottom}>
         <span className={styles.copyright}>{copyright}</span>
